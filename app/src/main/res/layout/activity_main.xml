@@ -131,18 +131,18 @@
         app:layout_constraintTop_toTopOf="@id/repost" />
 
     <TextView
-        android:id="@+id/views_count"
+        android:id="@+id/view_count"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/counter_spacing"
         android:minWidth="@dimen/minWidth_count"
         android:text="@string/views_count"
-        app:layout_constraintBottom_toBottomOf="@id/views"
+        app:layout_constraintBottom_toBottomOf="@id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/views" />
+        app:layout_constraintTop_toTopOf="@id/view" />
 
     <ImageView
-        android:id="@+id/views"
+        android:id="@+id/view"
         android:layout_width="@dimen/views"
         android:layout_height="@dimen/views"
         android:layout_margin="@dimen/counter_spacing"
@@ -151,7 +151,7 @@
         android:minWidth="@dimen/click_field_size"
         android:minHeight="@dimen/click_field_size"
         app:layout_constraintBottom_toBottomOf="@id/repost"
-        app:layout_constraintEnd_toStartOf="@id/views_count"
+        app:layout_constraintEnd_toStartOf="@id/view_count"
         app:layout_constraintTop_toTopOf="@id/repost"
         app:srcCompat="@drawable/outline_visibility_24" />
 
