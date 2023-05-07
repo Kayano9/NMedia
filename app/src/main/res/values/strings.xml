@@ -9,4 +9,10 @@
     <string name="description_repost">Repost</string>
     <string name="views_count" translatable="false">500</string>
     <string name="description_views">Nuber of views</string>
+    <string name="post_text">Post text</string>
+    <string name="description_post_save">Save</string>
+    <string name="menu_edit">Edit</string>
+    <string name="menu_remove">Remove</string>
+    <string name="error_empty_content">Content can\'t be empty</string>
+    <string name="description_post_cancel">Cancel</string>
 </resources>

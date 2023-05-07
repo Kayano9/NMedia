@@ -2,6 +2,7 @@ package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,17 +12,20 @@ import ru.netology.nmedia.dto.Post
 import java.math.RoundingMode
 
 interface OnInteractionListenner {
-    fun onLike(post: Post){}
-    fun onRepost(post: Post){}
+    fun onLike(post: Post) {}
+    fun onRepost(post: Post) {}
+    fun onEdit(post: Post) {}
+    fun onRemove(post: Post) {}
+
+    fun cancel(){}
 }
 
 class PostsAdapter(
     private val onInteractionListener: OnInteractionListenner
-    ) : ListAdapter<Post, PostViewHolder>(PostDiffCallback()) {
-
+) : ListAdapter<Post, PostViewHolder>(PostDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding = CardPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PostViewHolder(binding,onInteractionListener)
+        return PostViewHolder(binding, onInteractionListener)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
@@ -44,15 +48,34 @@ class PostViewHolder(
             like.setImageResource(
                 if (post.likedByMe) R.drawable.baseline_favorite_24 else R.drawable.outline_favorite_border_24
             )
+            menu.setOnClickListener {
+                PopupMenu(it.context, it).apply {
+                    inflate(R.menu.options_post)
+                    setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            R.id.remove -> {
+                                onInteractionListenner.onRemove(post)
+                                true
+                            }
+                            R.id.edit -> {
+                                onInteractionListenner.onEdit(post)
+                                true
+                            }
+                        else -> false
+                        }
+                    }
+                }.show()
+            }
 
-            like.setOnClickListener{
-               onInteractionListenner.onLike(post)
+            like.setOnClickListener {
+                onInteractionListenner.onLike(post)
             }
             repost.setOnClickListener {
                 onInteractionListenner.onRepost(post)
             }
         }
     }
+
     fun round(a: Int): String {
         val b: String
         if (a >= 1000) {

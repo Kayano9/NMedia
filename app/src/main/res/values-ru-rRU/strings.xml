@@ -6,6 +6,11 @@
     <string name="description_post_menu">Менб поста</string>
     <string name="description_like">нравится</string>
     <string name="description_repost">Поделиться</string>
-    <string name="views_count">500</string>
     <string name="description_views">Количество просмотров</string>
+    <string name="post_text">Текст поста</string>
+    <string name="description_post_save">Сохранить</string>
+    <string name="menu_edit">Редактировать</string>
+    <string name="menu_remove">Улалить</string>
+    <string name="error_empty_content">Контент не может быть пустым</string>
+    <string name="description_post_cancel">Отмена</string>
 </resources>
